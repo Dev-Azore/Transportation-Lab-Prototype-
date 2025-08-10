@@ -1,0 +1,53 @@
+:root{
+  --bg:#0b1221; --card:#0f1724; --accent:#00aaff; --muted:#9aa7b2;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:linear-gradient(180deg,#071122,#071328); color:#e6f0f6;
+  min-height:100vh;
+}
+header{padding:10px 16px; text-align:center;}
+main{display:flex; gap:8px; padding:8px;}
+#palette{
+  width:150px; background:var(--card); border-radius:10px; padding:8px;
+  height:720px; overflow:auto;
+}
+.palette-title{font-weight:700; margin-bottom:8px}
+.pal-item{
+  width:100%; padding:8px; margin:6px 0; border-radius:8px; border:none;
+  background:#081827; color:var(--accent); font-weight:700;
+}
+.palette-actions{display:flex; flex-direction:column; gap:6px; margin-top:8px}
+.palette-actions button{padding:6px; border-radius:6px; border:none; background:#073047; color:#cfeffd}
+#board-wrap{flex:1; position:relative; display:flex; gap:12px;}
+canvas#board{border-radius:12px; background:#071623; touch-action:none; width:100%; height:720px; display:block;}
+#right-col{width:260px; display:flex; flex-direction:column; gap:10px;}
+#traffic-pane{
+  padding:12px; background:var(--card); border-radius:12px;
+  display:flex; flex-direction:column; gap:10px; align-items:center;
+}
+.two-way{display:flex; gap:10px;}
+.light{display:flex; flex-direction:column; gap:6px; padding:8px; background:#051018; border-radius:8px;}
+.lamp{width:46px; height:46px; border-radius:50%; background:#032; box-shadow:inset 0 -6px 20px rgba(0,0,0,0.6);}
+.lamp.on{box-shadow:0 0 18px rgba(255,255,255,0.45);}
+#ns-red.on{background:#f33}
+#ns-yellow.on{background:#ffcc00}
+#ns-green.on{background:#4caf50}
+#ew-red.on{background:#f33}
+#ew-yellow.on{background:#ffcc00}
+#ew-green.on{background:#4caf50}
+#status{font-size:13px; color:var(--muted)}
+footer{padding:10px; text-align:center; color:var(--muted)}
+.hint{font-size:12px; color:var(--muted); margin-top:8px}
+#panel{padding:10px; background:#071a22; border-radius:8px;}
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:40}
+.overlay .card{background:#081c26;padding:18px;border-radius:12px;max-width:420px}
+.hidden{display:none}
+#confetti-canvas{position:fixed; inset:0; pointer-events:none; z-index:50}
+@media (max-width:900px){
+  main{flex-direction:column}
+  #palette{width:100%; display:flex; overflow:auto; flex-wrap:wrap;}
+  #right-col{width:100%}
+  canvas#board{height:560px}
+}

@@ -1,0 +1,14 @@
+{
+  "name": "HEAT Labs - Visual Logic Lab",
+  "short_name": "HEATLabs",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#071122",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

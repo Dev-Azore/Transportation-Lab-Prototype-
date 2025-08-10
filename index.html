@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
+  <title>HEAT Labs — Interactive Visual Lab</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>HEAT Labs — Visual Logic Lab</h1>
+  </header>
+
+  <main>
+    <aside id="palette">
+      <div class="palette-title">Components</div>
+      <button class="pal-item" data-type="AND">AND</button>
+      <button class="pal-item" data-type="OR">OR</button>
+      <button class="pal-item" data-type="NOT">NOT</button>
+      <button class="pal-item" data-type="TIMER">TIMER</button>
+      <button class="pal-item" data-type="LAMP">LAMP</button>
+      <div class="palette-actions">
+        <button id="btn-template">Load Template</button>
+        <button id="btn-save">Save</button>
+        <button id="btn-load">Load</button>
+        <button id="btn-export">Export JSON</button>
+        <input id="file-import" type="file" style="display:none" />
+        <button id="btn-screenshot">Screenshot</button>
+      </div>
+      <div class="hint">Tap to add. Drag pins to wire. Double-tap a component to label it.</div>
+    </aside>
+
+    <section id="board-wrap">
+      <canvas id="board" width="800" height="1200"></canvas>
+      <div id="right-col">
+        <div id="traffic-pane">
+          <div class="two-way">
+            <div class="light ns">
+              <div class="lamp" id="ns-red"></div>
+              <div class="lamp" id="ns-yellow"></div>
+              <div class="lamp" id="ns-green"></div>
+            </div>
+            <div class="light ew">
+              <div class="lamp" id="ew-red"></div>
+              <div class="lamp" id="ew-yellow"></div>
+              <div class="lamp" id="ew-green"></div>
+            </div>
+          </div>
+          <div id="status">Status: idle</div>
+        </div>
+
+        <div id="panel">
+          <h3>Inspector</h3>
+          <div id="inspector">Tap a component to inspect.</div>
+          <h3>Logic Expression</h3>
+          <pre id="codeview">// Boolean expression will appear here</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="tutorial" class="overlay hidden">
+    <div class="card">
+      <h2>Welcome to HEAT Labs</h2>
+      <p>This quick tutorial will show you how to build a traffic-light circuit.</p>
+      <ol>
+        <li>Tap <strong>TIMER</strong> to add a clock.</li>
+        <li>Drag gates from the palette and connect pins (drag from output to input).</li>
+        <li>Double-tap a component to label it <code>NS_GREEN</code>, <code>EW_GREEN</code>, etc.</li>
+        <li>When lamps light up, your traffic light will animate.</li>
+      </ol>
+      <div class="controls">
+        <button id="tutorial-skip">Skip</button>
+        <button id="tutorial-done">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti-canvas"></div>
+
+  <footer>
+    <small>Offline-first demo • For hackathon</small>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('sw.js').catch(console.error);
+    }
+  </script>
+</body>
+</html>
